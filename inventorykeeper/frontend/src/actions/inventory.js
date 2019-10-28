@@ -1,26 +1,30 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import { GET_INVENTORY, DELETE_ITEM, ADD_ITEM } from "./types";
 
 // GET ITEMS
-export const getInventory = () => dispatch => {
+export const getInventory = () => (dispatch, getState) => {
   axios
-    .get("/api/inventory/")
+    .get("/api/inventory/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_INVENTORY,
         payload: res.data
       });
     })
-    .catch(err => dispatch(returnErrors(err.res.data, err.res.status)));
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // DELETE ITEMS
-export const deleteItem = id => dispatch => {
+export const deleteItem = id => (dispatch, getState) => {
   axios
-    .delete(`/api/inventory/${id}/`)
+    .delete(`/api/inventory/${id}/`, tokenConfig(getState))
     .then(res => {
+      dispatch(createMessage({ deleteItem: "Item Deleted" }));
       dispatch({
         type: DELETE_ITEM,
         payload: id
@@ -32,14 +36,17 @@ export const deleteItem = id => dispatch => {
 };
 
 // ADD ITEM
-export const addItem = item => dispatch => {
+export const addItem = item => (dispatch, getState) => {
   axios
-    .post("/api/inventory/", item)
+    .post("/api/inventory/", item, tokenConfig(getState))
     .then(res => {
+      dispatch({ addItem: "Item added" });
       dispatch({
         type: ADD_ITEM,
         payload: res.data
       });
     })
-    .catch(err => dispatch(returnErrors(err.res.data, err.res.status)));
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
