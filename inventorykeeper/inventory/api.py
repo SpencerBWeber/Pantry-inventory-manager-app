@@ -4,8 +4,13 @@ from .serializers import InventorySerializer
 
 # Inventory Viewset
 class InventoryViewSet(viewsets.ModelViewSet):
-  queryset = Inventory.objects.all()
   permission_classes = [
-    permissions.AllowAny
+    permissions.IsAuthenticated
   ]
   serializer_class = InventorySerializer
+
+  def get_queryset(self):
+    return self.request.user.leads.all()
+
+  def perform_create(self, serializer):
+    serializer.save(owner=self.request.user)

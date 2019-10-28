@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createMessage, returnErrors } from "./messages";
 
 import { GET_INVENTORY, DELETE_ITEM, ADD_ITEM } from "./types";
 
@@ -12,9 +13,7 @@ export const getInventory = () => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => {
-      console.log("get items error", err);
-    });
+    .catch(err => dispatch(returnErrors(err.res.data, err.res.status))););
 };
 
 // DELETE ITEMS
@@ -42,7 +41,5 @@ export const addItem = item => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => {
-      console.log("get items error", err);
-    });
+    .catch(err => dispatch(returnErrors(err.res.data, err.res.status)));
 };
