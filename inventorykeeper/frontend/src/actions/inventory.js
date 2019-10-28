@@ -13,7 +13,7 @@ export const getInventory = () => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => dispatch(returnErrors(err.res.data, err.res.status))););
+    .catch(err => dispatch(returnErrors(err.res.data, err.res.status)));
 };
 
 // DELETE ITEMS
