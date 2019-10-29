@@ -40,7 +40,7 @@ export const addItem = item => (dispatch, getState) => {
   axios
     .post("/api/inventory/", item, tokenConfig(getState))
     .then(res => {
-      dispatch({ addItem: "Item added" });
+      dispatch(createMessage({ addItem: "Item added" }));
       dispatch({
         type: ADD_ITEM,
         payload: res.data

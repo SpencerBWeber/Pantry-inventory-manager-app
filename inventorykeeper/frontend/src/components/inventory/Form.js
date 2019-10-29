@@ -22,6 +22,10 @@ class Form extends Component {
     const { name, count } = this.state;
     const item = { name, count };
     this.props.addItem(item);
+    this.setState({
+      name: "",
+      count: ""
+    });
   };
 
   render() {

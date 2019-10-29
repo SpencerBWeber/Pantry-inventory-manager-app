@@ -1,4 +1,9 @@
-import { GET_INVENTORY, DELETE_ITEM, ADD_ITEM } from "../actions/types.js";
+import {
+  GET_INVENTORY,
+  DELETE_ITEM,
+  ADD_ITEM,
+  CLEAR_ITEMS
+} from "../actions/types.js";
 
 const initialState = {
   inventory: []
@@ -20,6 +25,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         inventory: [...state.inventory, action.payload]
+      };
+    case CLEAR_ITEMS:
+      return {
+        ...state,
+        inventory: []
       };
     default:
       return state;
