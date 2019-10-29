@@ -7,6 +7,10 @@
     "dev": "webpack --mode development --watch ./inventorykeeper/frontend/src/index.js --output ./inventorykeeper/frontend/static/frontend/main.js",
     "build": "webpack --mode production ./inventorykeeper/frontend/src/index.js --output ./inventorykeeper/frontend/static/frontend/main.js"
   },
+  "engines": {
+    "node": "12.10.0",
+    "npm": "6.10.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SpencerBWeber/Pantry-inventory-manager-app.git"
