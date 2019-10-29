@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getInventory, deleteItem } from "../../actions/inventory";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 export class Inventory extends Component {
   static propTypes = {
@@ -17,32 +19,32 @@ export class Inventory extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Inventory</h2>
-        <table className="table table-striped">
+        <h2>My Pantry</h2>
+        <table className="table table-striped table-hover">
           <thead>
             <tr>
-              <th>ID</th>
+              <th />
               <th>Name</th>
               <th>Count</th>
-              <th />
             </tr>
           </thead>
 
           <tbody>
             {this.props.inventory.map(item => (
               <tr key={item.id}>
-                <td>{item.id}</td>
+                <td>
+                  <a
+                    onClick={this.props.deleteItem.bind(this, item.id)}
+                    className="btn btn-sm btn-danger"
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </a>
+                  <a>
+                    <FontAwesomeIcon icon={faEdit} />
+                  </a>
+                </td>
                 <td>{item.name}</td>
                 <td>{item.count}</td>
-                <td>
-                  <button
-                    onClick={this.props.deleteItem.bind(this, item.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    {" "}
-                    Delete
-                  </button>
-                </td>
               </tr>
             ))}
           </tbody>

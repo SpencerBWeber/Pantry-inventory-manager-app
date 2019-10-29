@@ -59,9 +59,23 @@ class Header extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               Inventory Manager
             </a>
+            {isAuthenticated ? (
+              <ul className="navbar-nav mt-lg-0">
+                <li className="nav-item">
+                  <Link to="/inventory" className="nav-link">
+                    My Pantry
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/form" className="nav-link">
+                    Add Item
+                  </Link>
+                </li>
+              </ul>
+            ) : null}
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>
