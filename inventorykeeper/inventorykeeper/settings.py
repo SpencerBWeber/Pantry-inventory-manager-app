@@ -129,4 +129,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-DEFAULT_PORT = os.environ['PORT']
+ON_HEROKU = os.environ.get("ON_HEROKU")
+if ON_HEROKU:
+    port = int(os.environ.get("PORT"< 17995))
+else:
+    port = 3000
