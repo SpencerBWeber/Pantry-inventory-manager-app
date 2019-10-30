@@ -1,1 +1,1 @@
-web: npm run build && gunicorn ./inventorykeeper/inventorykeeper.wsgi --log-file -
+web: npm run build && python inventorykeeper/manage.py migrate && python inventorykeeper/manage.py runserver $PORT --noreload
