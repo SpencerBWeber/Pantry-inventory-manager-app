@@ -1,1 +1,1 @@
-web: npm run build && gunicorn inventorykeeper.wsgi --log-file -
+web: npm run build && gunicorn inventorykeeper/inventorykeeper.wsgi --log-file -
