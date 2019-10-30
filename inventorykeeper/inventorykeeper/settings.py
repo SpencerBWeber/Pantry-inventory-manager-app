@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 # from .config import SECRET_API_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", False))
 
 ALLOWED_HOSTS = ["0.0.0.0", "https://sbw-django-react-app.herokuapp.com"]
 
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'inventorykeeper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "/frontend/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,8 +130,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIR = os.path.join(BASE_DIR, "/frontend/static")
+
 ON_HEROKU = os.environ.get("ON_HEROKU")
 if ON_HEROKU:
     port = int(os.environ.get("PORT", 17995))
 else:
     port = 3000
+
+django_heroku.settings(locals())
