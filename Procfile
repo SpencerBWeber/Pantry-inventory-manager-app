@@ -1,2 +1,2 @@
 release: python inventorykeeper/manage.py migrate
-web: gunicorn inventorykeeper.wsgi --log-file -
+web: npm run build && python inventoryKeeper/manage.py runserver
