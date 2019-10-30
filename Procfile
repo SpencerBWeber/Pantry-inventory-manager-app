@@ -1,1 +1,1 @@
-web: npm run build && python inventorykeeper/manage.py migrate && python inventorykeeper/manage.py $PORT --noreload
+web: npm run build && python inventorykeeper/manage.py migrate && python inventorykeeper/manage.py runserver $PORT --noreload
