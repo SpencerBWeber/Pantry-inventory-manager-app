@@ -7,7 +7,10 @@ import { GET_INVENTORY, DELETE_ITEM, ADD_ITEM } from "./types";
 // GET ITEMS
 export const getInventory = () => (dispatch, getState) => {
   axios
-    .get("/api/inventory/", tokenConfig(getState))
+    .get(
+      "https://sbw-django-react-app.herokuapp.com/api/inventory/",
+      tokenConfig(getState)
+    )
     .then(res => {
       dispatch({
         type: GET_INVENTORY,
@@ -22,7 +25,10 @@ export const getInventory = () => (dispatch, getState) => {
 // DELETE ITEMS
 export const deleteItem = id => (dispatch, getState) => {
   axios
-    .delete(`/api/inventory/${id}/`, tokenConfig(getState))
+    .delete(
+      `https://sbw-django-react-app.herokuapp.com/api/inventory/${id}/`,
+      tokenConfig(getState)
+    )
     .then(res => {
       dispatch(createMessage({ deleteItem: "Item Deleted" }));
       dispatch({
@@ -31,14 +37,18 @@ export const deleteItem = id => (dispatch, getState) => {
       });
     })
     .catch(err => {
-      console.log("get items error", err);
+      console.log("delete items error", err);
     });
 };
 
 // ADD ITEM
 export const addItem = item => (dispatch, getState) => {
   axios
-    .post("/api/inventory/", item, tokenConfig(getState))
+    .post(
+      "https://sbw-django-react-app.herokuapp.com/api/inventory/",
+      item,
+      tokenConfig(getState)
+    )
     .then(res => {
       dispatch(createMessage({ addItem: "Item added" }));
       dispatch({
