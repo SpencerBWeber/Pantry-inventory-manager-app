@@ -1,1 +1,1 @@
-web: npm run build && python inventoryKeeper/manage.py runserver
+web: npm run build && python inventorykeeper/manage.py runserver
