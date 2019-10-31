@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_API_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "https://pantry-keeper-backend.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "https://pantry-keeper-backend.herokuapp.com"]
 
 
 # Application definition
