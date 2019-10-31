@@ -1,1 +1,0 @@
-web: gunicorn inventorykeeper.wsgi --log-file -
