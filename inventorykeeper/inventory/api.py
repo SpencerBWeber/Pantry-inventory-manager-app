@@ -8,9 +8,4 @@ class InventoryViewSet(viewsets.ModelViewSet):
     permissions.IsAuthenticated
   ]
   serializer_class = InventorySerializer
-
-  def get_queryset(self):
-    return self.request.user.inventory.all()
-
-  def perform_create(self, serializer):
-    serializer.save(owner=self.request.user)
+  queryset = Inventory.objects.all()
