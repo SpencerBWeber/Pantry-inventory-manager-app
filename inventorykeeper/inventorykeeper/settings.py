@@ -149,3 +149,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+import django_heroku 
+# Then all the way at the bottom of the file
+# ... 
+django_heroku.settings(locals())
