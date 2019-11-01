@@ -26,7 +26,7 @@ SECRET_KEY = "qf-7yqccnydfuv3128q&qtrl(rp1)c&dj5mc6-1=w5*l=)jgah"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "https://pantry-keeper-backend.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "https://pantry-keeper-backend.herokuapp.com", "https://pantry-keeper.netlify.com"]
 
 
 # Application definition
@@ -65,7 +65,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    "https://pantry-keeper-backend.herokuapp.com"
+    "https://pantry-keeper-backend.herokuapp.com", "https://pantry-keeper.netlify.com"
 )
 
 ROOT_URLCONF = 'inventorykeeper.urls'
